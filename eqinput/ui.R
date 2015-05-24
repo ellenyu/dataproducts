@@ -1,12 +1,14 @@
 library(shiny)
 shinyUI(pageWithSidebar(
-  headerPanel("Illustrating inputs"),
+  headerPanel("State of Oklahoma Earthquake Daily Rate"),
   sidebarPanel(
-    numericInput('id1', 'Numeric input, labeled id1 max 10', 0, min = 0, max = 10, step = 1),
-    dateInput("date", "Date:"),  
-    actionButton("goButton", "Go!")
+    dateInput("date", "Start Date:"),
+    numericInput('id1', 'Duration in Days max(3650)', value= 3, min = 0, max = 3650, step = 1),
+  
+    submitButton("Submit")
   ),
   mainPanel(
-	plotOutput('newHist')
+	plotOutput('newHist'),
+	h4('Mean daily rate: '), verbatimTextOutput("medrate")
   )
 ))
